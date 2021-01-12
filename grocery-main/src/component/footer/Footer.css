@@ -1,0 +1,16 @@
+.footer{
+    height: 400px;
+    width: 100wh;
+    border: 0.5px  rgb(187, 184, 184);
+    /* margin-top: 10px; */
+  }
+
+  .f-grofer{
+    height: 400px;
+    width: 100wh;
+    /* border: 1px solid gray; */
+    background-color: #ffffff;
+  }
+  .f-heading{
+    margin-bottom: -14px;
+  }
