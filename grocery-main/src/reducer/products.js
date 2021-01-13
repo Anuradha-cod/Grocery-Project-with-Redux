@@ -1,16 +1,17 @@
-import { GET_CATEGORY } from "../action/types";
+import {GET_PRODUCT} from '../action/types';
 
 const initialState = {
-  category: [],
-};
-
-export default (state = initialState, action) => {
-  const { type, payload } = action;
-  switch (type) {
-    case GET_CATEGORY:
-      return { ...state, category: payload };
-
-    default:
-      return { ...state };
-  }
-};
+    product: [],
+  };
+  
+  export default (state = initialState, action) => {
+    const { type, payload } = action;
+    switch (type) {
+      case GET_PRODUCT:
+        return { ...state, product: payload };
+  
+      default:
+        return { ...state };
+    }
+  };
+  

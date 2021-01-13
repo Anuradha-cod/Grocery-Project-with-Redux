@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import SearchContain2 from "./SearchContain2";
+import { connect } from "react-redux";
+import { loadCategory } from "../../action/categories";
 
-const SearchContent = ({ context, setSearchHide }) => {
+const SearchContent = ({ loadCategory, category, setSearchHide }) => {
   // console.log(context);
   useEffect(() => {
-    if (!context.category.length) {
-      (async () => {
-        await context.getCategory();
-      })();
-    }
-  }, [context.category]);
+    loadCategory();
+  }, []);
 
   return (
     <div className="search-content">
@@ -18,8 +16,8 @@ const SearchContent = ({ context, setSearchHide }) => {
       <p className="search-content-div-para"  onClick={() => setSearchHide(false)}>  TRENDING</p>
 
 
-      {context.category &&
-        context.category.map((e, i) => {
+      {category &&
+       category.map((e, i) => {
           return <SearchContain2 key={i} item={e}/>;
         })}  
       
@@ -29,5 +27,7 @@ const SearchContent = ({ context, setSearchHide }) => {
     </div>
   );
 };
-
-export default SearchContent;
+const mapStateToprops = (state) => ({
+  category: state.categories.category,
+});
+export default connect(mapStateToprops, { loadCategory })(SearchContent);

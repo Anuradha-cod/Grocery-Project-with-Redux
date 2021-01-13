@@ -10,13 +10,13 @@ const Home = () => {
   return (
     <>
       <NavbarList />
-      {/* <Cart />
+      <Cart />
       <CityBank />
       <MainList  />
       <Bank />
       <OfferSection  />
       <OfferSection  />
-      <Slider /> */}
+      <Slider />
     </>
   );
 };

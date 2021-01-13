@@ -3,6 +3,8 @@ import Main from "./Main";
 import { useHistory } from "react-router-dom";
 // import Slider from "infinite-react-carousel";
 import "../mainCart/Main.css";
+import { connect } from "react-redux";
+import { loadproduct } from "../../action/products";
 // import Carousel from "react-multi-carousel";
 
 const responsive = {
@@ -23,37 +25,35 @@ const responsive = {
   },
 };
 
-const MainList = ({ context }) => {
-  const history = useHistory()
-  const handleSeeAllProduct =() =>{
-      history.push("/seeAllProduc");
-  }
+const MainList = ({ loadproduct, product }) => {
+  // const history = useHistory()
+  // const handleSeeAllProduct =() =>{
+  //     history.push("/seeAllProduc");
+  // }
 
   useEffect(() => {
-    if (!context.updatedProducts.length) {
-      (async () => {
-        await context.getProduct();
-      })();
-    }
-  }, [context.updatedProducts]);
+    loadproduct();
+  }, []);
 
   return (
     <div>
       <div className="mainList-fresh">
       <h3>Fresh Fruits and Veggies</h3>
-      <p onClick={handleSeeAllProduct} className="mainList-fresh-h2">See All</p>
+      {/* <p onClick={handleSeeAllProduct} className="mainList-fresh-h2">See All</p> */}
       </div>
       <div className="mainlist">
-        {context.updatedProducts &&
-          context.updatedProducts.map((e, i) => {
-            return <Main key={e._id} index={i} item={e} context={context} />;
+        {product &&
+          product.map((e, i) => {
+            return <Main key={e._id} index={i} item={e}  />;
           })}
-        <div onClick={handleSeeAllProduct} className="main-contain-seeAll">
+        {/* <div onClick={handleSeeAllProduct} className="main-contain-seeAll">
           <h2 className="main-contain-seeAll-h">See All </h2>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
-
-export default MainList;
+const mapStateToprops = (state) => ({
+  product: state.products.product,
+});
+export default connect(mapStateToprops, { loadproduct })(MainList);

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { GET_CATEGORY } from "./types";
+import { GET_PRODUCT } from "./types";
 
-export const loadCategory = () => async (dispatch) => {
+export const loadproduct = () => async (dispatch) => {
   const res = await axios.get(
-    "https://powerful-dawn-74322.herokuapp.com/api/category"
+    "https://powerful-dawn-74322.herokuapp.com/api/product"
   );
-  dispatch({ type: GET_CATEGORY, payload: res.data });
+  dispatch({ type: GET_PRODUCT, payload: res.data });
 };

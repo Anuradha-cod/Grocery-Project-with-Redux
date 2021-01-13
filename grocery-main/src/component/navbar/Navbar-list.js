@@ -4,7 +4,7 @@ import "../navbar/Navbar.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { connect } from "react-redux";
-import { loadCategory } from "../../action/products";
+import { loadCategory } from "../../action/categories";
 
 const responsive = {
   desktop: {
@@ -48,6 +48,6 @@ const NavbarList = ({ loadCategory, category }) => {
   );
 };
 const mapStateToprops = (state) => ({
-  category: state.products.category,
+  category: state.categories.category,
 });
 export default connect(mapStateToprops, { loadCategory })(NavbarList);
