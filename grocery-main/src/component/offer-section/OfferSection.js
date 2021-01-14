@@ -3,14 +3,14 @@ import './OfferList.css'
 import OfferDetail from './OfferDetail'
 import OfferListItem from './OfferListItem'
 
-const Slide =({context}) => {
+const Slide =() => {
     const [isVisible, setIsVisible] = useState(false);
     
     
     return (
         <div className="offer-list">
             <OfferDetail  setIsVisible={setIsVisible}/>
-            {isVisible &&<OfferListItem context={context} setIsVisible={setIsVisible}  /> }
+            {isVisible &&<OfferListItem  setIsVisible={setIsVisible}  /> }
             
         </div>
     )

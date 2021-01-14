@@ -18,10 +18,10 @@ const MainRouter = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={() => <Home />} />
-        {/* <Route path="/dashboard" component={() => <Dashboard />} />
+        <Route path="/dashboard" component={() => <Dashboard />} />
         <Route path="/register" component={() => <Register />} />
         <Route path="/login" component={() => <LoginCust />} />
-        <Route path="/seeAllProduc" component={() => <SeeAllProduc />} /> */}
+        <Route path="/seeAllProduc" component={() => <SeeAllProduc />} />
       </Switch>
     </>
     // )}

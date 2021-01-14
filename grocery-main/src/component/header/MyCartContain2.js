@@ -1,39 +1,41 @@
 import React from "react";
 import MainListBtn from "../mainCart/MainListBtn";
+import { connect } from "react-redux";
+import { incrementProductCount } from "../../action/products";
 
-const MyCartContain2 = (props) => {
-  console.log(props);
-  const handleIncrmntBtn = () => {
-
+const MyCartContain2 = ({ item, incrementProductCount}) => {
+  // console.log(props);
+  const handleIncrementBtn = () => {
+    incrementProductCount(item._id);
   };
   
   const getTotal = () => {
-    return props.item.count * props.item.unitPrice;
+    return item.count * item.unitPrice;
   }
   const handleDcrmntBtn = () => {};
 
   return (
-    props.item && (
+    item && (
       <div className="header-div-container">
         <div className="mycartcontain2">
           <div className="mycartcontainDiv">
             <img
               className="mycartcontain2-img"
-              src={props.item.images[0]}
+              src={item.images[0]}
               alt="img"
             />
 
-            <h3>{props.item.productName}   ₹{props.item.unitPrice}</h3>
+            <h3>{item.productName}   ₹{item.unitPrice}</h3>
             <h3>*</h3>
-            <h3>{props.item.count}=</h3>
+            <h3>{item.count}=</h3>
             <h3>{getTotal()}</h3>
           </div>
 
-          <p className="myCartcontain-p">{props.item.unitVariation}{props.item.unitType}</p>
+          <p className="myCartcontain-p">{item.unitVariation}{item.unitType}</p>
           <MainListBtn
-            value={props.item.count}
+            value={item.count}
             handleDcrmntBtn={handleDcrmntBtn}
-            handleIncrmntBtn={handleIncrmntBtn}
+            handleIncrementBtn={handleIncrementBtn}
           />
         </div>
         {/* <div className="myContainer2-total">total</div> */}
@@ -41,5 +43,7 @@ const MyCartContain2 = (props) => {
     )
   );
 };
-
-export default MyCartContain2;
+const mapStateToprops = (state) => ({
+  updatedProduct: state.products.updatedProduct,
+});
+export default connect(mapStateToprops, { incrementProductCount })(MyCartContain2);

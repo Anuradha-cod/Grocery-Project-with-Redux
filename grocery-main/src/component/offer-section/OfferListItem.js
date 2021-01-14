@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import OfferList from "./OfferList";
+import { connect } from "react-redux";
+import { loadproduct } from "../../action/products";
 
-function OfferListItem({context, setIsVisible}) {
+function OfferListItem({ loadproduct, product, setIsVisible}) {
  
-  // useEffect(() => {
-  //   console.log("---------------OfferListItem-----------");
-  //   async function fetchData() {
-  //     await context.getProduct();
-  //   }
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    loadproduct();
+  }, []);
 
   return (
     // props.isVisible &&
     <div onClick={() => setIsVisible(false)} className="OfferListItem">
-      {context.products && context.products.map((e, i) => {
+      {product && product.map((e, i) => {
         return <OfferList key={i} item={e} />;
       })}
     </div>
   );
 }
-
-export default OfferListItem;
+const mapStateToprops = (state) => ({
+  product: state.products.product,
+});
+export default connect(mapStateToprops, { loadproduct })(OfferListItem);

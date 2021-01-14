@@ -3,13 +3,13 @@ import SliderImg from "./SliderImg";
 import Para from "./Para";
 import "./Img.css";
 
-const Flex = ({ context }) => {
+const Flex = () => {
 
   
   return (
     <div className="flex1">
-      <SliderImg context={context} />
-      <Para  context={context} />
+      <SliderImg />
+      {/* <Para  /> */}
     </div>
   );
 };

@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import SeeAllProdectsImg from "./SeeAllProdectsImg";
+import { connect } from "react-redux";
+import { loadproduct } from "../../action/products";
 
 
-const SeeAllMain = ({ context }) => {
+const SeeAllMain = ({ loadproduct, product }) => {
 
 // const arr=["name" = "Top Savers Today" , "name" = "",  "name" = "",  "name" = "",  "name" = "",  "name" = "",  "name" = "",  "name" = "",  "name" = "",  "name" = "",]  ;
 
   useEffect(() => {
-    if (!context.category.length) {
-      (async () => {
-        await context.getCategory();
-      })();
-    }
-  }, [context.category]);
+    loadproduct();    
+  }, []);
 
   return (
     <div>
@@ -51,8 +49,8 @@ const SeeAllMain = ({ context }) => {
             </h1>
           </div>
           <div  className="seeAllMain-map">
-          {context.category &&
-        context.category.map((e, i) => {
+          {product &&
+        product.map((e, i) => {
           // return <div>asda</div>
           return <SeeAllProdectsImg key={i} item={e} />;
         })}  
@@ -63,5 +61,7 @@ const SeeAllMain = ({ context }) => {
     </div>
   );
 };
-
-export default SeeAllMain;
+const mapStateToprops = (state) => ({
+  product: state.products.product,
+});
+export default connect(mapStateToprops, { loadproduct })(SeeAllMain);

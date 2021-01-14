@@ -13,7 +13,6 @@ function OfferDetail({setIsVisible}) {
         </p>
          </div>
          <FaChevronDown onClick={()=> {
-             console.log("click here...");
              setIsVisible(true)
          }}/>
         </div>

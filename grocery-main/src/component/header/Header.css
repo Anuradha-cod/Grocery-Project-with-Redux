@@ -153,6 +153,7 @@ left: 0;
     margin-top: 50px;
     border-radius: 1%;
     color: black;
+    overflow-y: auto;
     /* margin-left: -200px; */
   }
 

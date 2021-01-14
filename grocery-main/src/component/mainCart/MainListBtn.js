@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 
 const MainListBtn = (props) => {
-  
+  // const [count, setcount] = useState()
 
   const addbtn = (
-    <button className="mainbtn" onClick={props.handleIncrmntBtn}>
+    <button className="mainbtn" onClick={props.handleIncrementBtn}>
       Add
     </button>
   );
 
   const cntrlbtn = (
     <div className="cntrlbtn">
-      <button className="subBtn" onClick={props.handleDcrmntBtn}>
+      <button className="subBtn" onClick={props.handleDecrementBtn}>
         -
       </button><span className="spanCount">{props.value}</span>
-      <button className="addbtn" onClick={props.handleIncrmntBtn}>
+      <button className="addbtn" onClick={props.handleIncrementBtn}>
         +
       </button>
     </div>
   );
-  return <div>{ !props.value ? addbtn : cntrlbtn }</div>;
+  return <div>{!props.value ? addbtn : cntrlbtn }</div>;
 };
 
 export default MainListBtn;

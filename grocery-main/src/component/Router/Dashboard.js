@@ -6,13 +6,13 @@ import NavbarList from '../navbar/Navbar-list';
 import './Router.css'
 
 
-const Dashboard =({context}) => {
+const Dashboard =() => {
     return (
         <div className="dashboard">
-            <Flex context={context} />
-            <ParaDown  context={context}/>
-            <MainList context={context}/>
-            <NavbarList context={context}/>
+            <Flex  />
+            <ParaDown  />  
+            <MainList />
+            <NavbarList />
             
         </div>
     )
