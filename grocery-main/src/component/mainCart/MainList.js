@@ -7,10 +7,10 @@ import { connect } from "react-redux";
 import { loadproduct } from "../../action/products";
 // import Carousel from "react-multi-carousel";
 const MainList = ({ loadproduct, product }) => {
-  const history = useHistory()
-  const handleSeeAllProduct =() =>{
-      history.push("/seeAllProduc");
-  }
+  const history = useHistory();
+  const handleSeeAllProduct = () => {
+    history.push("/seeAllProduc");
+  };
 
   useEffect(() => {
     loadproduct();
@@ -19,13 +19,15 @@ const MainList = ({ loadproduct, product }) => {
   return (
     <div>
       <div className="mainList-fresh">
-      <h3>Fresh Fruits and Veggies</h3>
-      <p onClick={handleSeeAllProduct} className="mainList-fresh-h2">See All</p>
+        <h3>Fresh Fruits and Veggies</h3>
+        <p onClick={handleSeeAllProduct} className="mainList-fresh-h2">
+          See All
+        </p>
       </div>
       <div className="mainlist">
         {product &&
           product.map((e, i) => {
-            return <Main key={e._id} index={i} item={e}  />;
+            return <Main key={e._id} index={i} item={e} />;
           })}
         <div onClick={handleSeeAllProduct} className="main-contain-seeAll">
           <h2 className="main-contain-seeAll-h">See All </h2>

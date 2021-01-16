@@ -12,14 +12,19 @@ import { setSelectedProduct } from "../../action/products";
 // }
 
 const SliderImg = ({ setSelectedProduct, selectedProduct }) => {
+  // console.log(history);
   return (
     <div className="sliderImg">
       <div className="Slider-img">
-    {
-        // isImagesAvailable(props) &&
-        <img className="img-class1" src={selectedProduct.images}  alt ="img"/>
-    }
-    </div>
+        {
+          // isImagesAvailable(props) &&
+          <img
+            className="img-class1"
+            src={selectedProduct.images[0]}
+            alt="img"
+          />
+        }
+      </div>
     </div>
   );
 };

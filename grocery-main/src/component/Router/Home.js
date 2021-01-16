@@ -3,7 +3,7 @@ import MainList from "../mainCart/MainList";
 import Cart from "../Cart";
 import Bank from "../BankOffer";
 import CityBank from "../CityBank";
- import OfferSection from "../offer-section/OfferSection";
+import OfferSection from "../offer-section/OfferSection";
 import Slider from "../slider/Slider";
 
 const Home = () => {
@@ -12,10 +12,10 @@ const Home = () => {
       <NavbarList />
       <Cart />
       <CityBank />
-      <MainList  />
+      <MainList />
       <Bank />
-      <OfferSection  />
-      <OfferSection  />
+      <OfferSection />
+      <OfferSection />
       <Slider />
     </>
   );

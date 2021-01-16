@@ -4,12 +4,10 @@ import Para from "./Para";
 import "./Img.css";
 
 const Flex = () => {
-
-  
   return (
     <div className="flex1">
       <SliderImg />
-      {/* <Para  /> */}
+      <Para />
     </div>
   );
 };

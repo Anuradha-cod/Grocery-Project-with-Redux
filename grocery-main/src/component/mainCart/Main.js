@@ -2,33 +2,36 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import MainListBtn from "./MainListBtn";
-import { incrementProductCount, setSelectedProduct } from "../../action/products";
+import {
+  incrementProductCount,
+  setSelectedProduct,
+  decrementProductCount,
+} from "../../action/products";
 // import Main from './'
 
-const Main = ({ index, item, incrementProductCount,setSelectedProduct }) => {
+const Main = ({
+  index,
+  item,
+  decrementProductCount,
+  incrementProductCount,
+  setSelectedProduct,
+}) => {
   // console.log(item);
   const history = useHistory();
 
   // // const context = props.context;
   const handlClick = () => {
-    setSelectedProduct({ item: item });
-    history.push("/dashboard");
+    // console.log(item);
+    setSelectedProduct({ ...item });
+    history.push({ pathname: "/dashboard", state: item });
   };
 
   const handleIncrementBtn = () => {
     incrementProductCount(item._id);
   };
-  const handleDecrementBtn = () => {};
-  // const handleIncrmntBtn = () => {
-  //   context.incrementItem(item._id, index);
-  //   // console.log("anuradha");
-  // };
-
-  // const handleDcrmntBtn = () => {
-  //   context.decrementItem(item._id);
-  //   // console.log("bansal");
-  // };
-  // console.log(item.productName === "Small Onion" && item.images);
+  const handleDecrementBtn = () => {
+    decrementProductCount(item._id);
+  };
 
   return (
     <div className="main-container">
@@ -56,4 +59,8 @@ const Main = ({ index, item, incrementProductCount,setSelectedProduct }) => {
 const mapStateToprops = (state) => ({
   updatedProduct: state.products.updatedProduct,
 });
-export default connect(mapStateToprops, { incrementProductCount, setSelectedProduct })(Main);
+export default connect(mapStateToprops, {
+  incrementProductCount,
+  decrementProductCount,
+  setSelectedProduct,
+})(Main);

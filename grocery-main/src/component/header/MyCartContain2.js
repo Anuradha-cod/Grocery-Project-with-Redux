@@ -1,49 +1,61 @@
 import React from "react";
 import MainListBtn from "../mainCart/MainListBtn";
 import { connect } from "react-redux";
-import { incrementProductCount } from "../../action/products";
+import {
+  incrementProductCount,
+  decrementProductCount,
+} from "../../action/products";
 
-const MyCartContain2 = ({ item, incrementProductCount}) => {
+const MyCartContain2 = ({
+  item,
+  incrementProductCount,
+  decrementProductCount,
+}) => {
   // console.log(props);
   const handleIncrementBtn = () => {
     incrementProductCount(item._id);
   };
-  
+
   const getTotal = () => {
     return item.count * item.unitPrice;
-  }
-  const handleDcrmntBtn = () => {};
+  };
+  const handleDecrementBtn = () => {
+    decrementProductCount(item._id);
+  };
 
   return (
-    item && (
-      <div className="header-div-container">
-        <div className="mycartcontain2">
-          <div className="mycartcontainDiv">
-            <img
-              className="mycartcontain2-img"
-              src={item.images[0]}
-              alt="img"
-            />
+    <div className="header-div-container">
+      {/* <div>Total</div> */}
+      <div className="mycartcontain2">
+        <div className="mycartcontainDiv">
+          <img className="mycartcontain2-img" src={item.images[0]} alt="img" />
 
-            <h3>{item.productName}   ₹{item.unitPrice}</h3>
-            <h3>*</h3>
-            <h3>{item.count}=</h3>
-            <h3>{getTotal()}</h3>
-          </div>
-
-          <p className="myCartcontain-p">{item.unitVariation}{item.unitType}</p>
-          <MainListBtn
-            value={item.count}
-            handleDcrmntBtn={handleDcrmntBtn}
-            handleIncrementBtn={handleIncrementBtn}
-          />
+          <h3>
+            {item.productName} ₹{item.unitPrice}
+          </h3>
+          <h3>*</h3>
+          <h3>{item.count}=</h3>
+          <h3>{getTotal()}</h3>
         </div>
-        {/* <div className="myContainer2-total">total</div> */}
+
+        <p className="myCartcontain-p">
+          {item.unitVariation}
+          {item.unitType}
+        </p>
+        <MainListBtn
+          value={item.count}
+          handleDecrementBtn={handleDecrementBtn}
+          handleIncrementBtn={handleIncrementBtn}
+        />
       </div>
-    )
+      {/* <div className="myContainer2-total">total</div> */}
+    </div>
   );
 };
 const mapStateToprops = (state) => ({
   updatedProduct: state.products.updatedProduct,
 });
-export default connect(mapStateToprops, { incrementProductCount })(MyCartContain2);
+export default connect(mapStateToprops, {
+  incrementProductCount,
+  decrementProductCount,
+})(MyCartContain2);

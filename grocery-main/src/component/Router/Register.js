@@ -14,19 +14,23 @@ const Register = () => {
         <h3>SignUp</h3>
         <div>
           <p className="register-para">Name:</p>
-          <input className="register-input" />
+          <input className="register-input" type="text"
+            name="name"/>
         </div>
         <div>
           <p className="register-para">E-mail:</p>
-          <input className="register-input" />
+          <input className="register-input" type="email"
+            name="email" />
         </div>
         <div>
           <p className="register-para">Password:</p>
-          <input className="register-input" />
+          <input className="register-input"  type="password"
+            name="password"/>
         </div>
         <div>
           <p className="register-para">Confirm Password:</p>
-          <input className="register-input" />
+          <input className="register-input"  type="password"
+            name="password2" />
         </div>
         <button>Submit</button>
         <span>

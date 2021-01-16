@@ -12,17 +12,21 @@ const SearchContent = ({ loadCategory, category, setSearchHide }) => {
 
   return (
     <div className="search-content">
-      <div className="search-content-div">
-      <p className="search-content-div-para"  onClick={() => setSearchHide(false)}>  TRENDING</p>
+      <div className="">
+        <p
+          className="search-content-div-para"
+          onClick={() => setSearchHide(false)}
+        >
+          {" "}
+          TRENDING
+        </p>
 
+        {category &&
+          category.map((e, i) => {
+            return <SearchContain2 key={i} item={e} />;
+          })}
 
-      {category &&
-       category.map((e, i) => {
-          return <SearchContain2 key={i} item={e}/>;
-        })}  
-      
-
-      {/* <p>{context.category[0].title}</p> */}
+        {/* <p>{context.category[0].title}</p> */}
       </div>
     </div>
   );
