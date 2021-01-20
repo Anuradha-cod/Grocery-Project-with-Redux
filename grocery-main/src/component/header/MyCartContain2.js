@@ -17,25 +17,26 @@ const MyCartContain2 = ({
   };
 
   const getTotal = () => {
-    return item.count * item.unitPrice;
+    const addTotal = item.count * item.unitPrice;
+    return addTotal;
   };
+
   const handleDecrementBtn = () => {
     decrementProductCount(item._id);
   };
 
   return (
     <div className="header-div-container">
-      {/* <div>Total</div> */}
       <div className="mycartcontain2">
         <div className="mycartcontainDiv">
           <img className="mycartcontain2-img" src={item.images[0]} alt="img" />
 
-          <h3>
+          <p>
             {item.productName} ₹{item.unitPrice}
-          </h3>
-          <h3>*</h3>
-          <h3>{item.count}=</h3>
-          <h3>{getTotal()}</h3>
+          </p>
+          <p>/</p>
+          <p>{item.count}=</p>
+          <p>{getTotal()}</p>
         </div>
 
         <p className="myCartcontain-p">

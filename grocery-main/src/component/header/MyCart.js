@@ -5,13 +5,9 @@ const MyCart = ({ setMyCart, myCart }) => {
   // const [myCart, setMyCart] = useState(false);
 
   return (
-    <div className="cart">
-      My Cart{" "}
-      <AiOutlineShoppingCart
-        size={25}
-        className="cartIcon"
-        onClick={() => setMyCart(!myCart)}
-      />
+    <div className="cart" onClick={() => setMyCart(true)}>
+      My Cart
+      <AiOutlineShoppingCart size={25} className="cartIcon" />
     </div>
   );
 };
