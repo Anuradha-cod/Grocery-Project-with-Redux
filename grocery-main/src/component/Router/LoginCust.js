@@ -1,33 +1,68 @@
-import React from 'react'
-import {useHistory} from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { Redirect, useHistory } from "react-router-dom";
+import { login } from "../../action/auth";
+import { connect } from "react-redux";
+// import {isAu} from 'module'
 
-const LoginCust = () => {
-  const history = useHistory()
-const handlClick =() =>{
-  history.push("/");
-}
-    
-    return (
-        <div className="loginDetail">
-        <div className="login-div">
-            <form className="login-form">
-          <h3>Login</h3>
+const LoginCust = ({ login, isAuthenticated }) => {
+  const [formData, setformData] = useState({
+    email: "",
+    password: "",
+  });
+  const history = useHistory();
+  const { email, password } = formData;
+  const handlClick = async (e) => {
+    // history.push("/");
+
+    e.preventDefault();
+    login(email, password);
+  };
+
+  const handleChange = (e) => {
+    setformData({ ...formData, [e.target.name]: e.target.value });
+  };
+  // console.log(formData);
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+  return (
+    <div className="loginDetail">
+      <div className="login-div">
+        <h3>Login</h3>
+        <form className="login-form">
           <div>
             <p className="login-para">E-mail:</p>
-            <input className="login-input" type="email"
-            name="email" />
+            <input
+              className="login-input"
+              onChange={(e) => handleChange(e)}
+              type="email"
+              name="email"
+            />
           </div>
           <div>
             <p className="login-para">Password:</p>
-            <input className="login-input" type="password"
-            name="password"/>
+            <input
+              className="login-input"
+              onChange={(e) => handleChange(e)}
+              type="password"
+              name="password"
+            />
           </div>
-          <button className="login-btn"onClick={handlClick} >Submit</button>
-          </form>
-          </div>
-          </div>
+          <button className="login-btn" onClick={handlClick}>
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+// const mapStateToProps =(...state) => {
+//   isAuthenticated: state.auth.isAuthenticated,
+// };
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
 
-    )
-}
-
-export default LoginCust
+export default connect(mapStateToProps, { login })(LoginCust);

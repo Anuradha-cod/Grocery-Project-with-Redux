@@ -1,46 +1,98 @@
-import React from "react";
-import {useHistory} from 'react-router-dom';
+import React, { useState } from "react";
+import { Redirect, useHistory } from "react-router-dom";
+import { register } from "../../action/auth";
+import { connect } from "react-redux";
+import { setAlert } from "../../action/alert";
 
-const Register = () => {
-  const history = useHistory()
-  const handlClick =() =>{
-      history.push("/login");
+const Register = ({ register, isAuthenticated, setAlert }) => {
+  const [formData, setformData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const { name, email, password, password2 } = formData;
+  const history = useHistory();
+  const handlePush = () => {
+    history.push("/login");
+  };
+  const handlClick = (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      setAlert("Password did not match ", "danger");
+    } else {
+      register(name, email, password);
+    }
+  };
+
+  const handleChange = (e) => {
+    setformData({ ...formData, [e.target.name]: e.target.value });
+  };
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
   }
-  
+  console.log(formData);
   return (
     <div className="register">
       <div className="register-div">
-          <form className="register-form">
-        <h3>SignUp</h3>
-        <div>
-          <p className="register-para">Name:</p>
-          <input className="register-input" type="text"
-            name="name"/>
-        </div>
-        <div>
-          <p className="register-para">E-mail:</p>
-          <input className="register-input" type="email"
-            name="email" />
-        </div>
-        <div>
-          <p className="register-para">Password:</p>
-          <input className="register-input"  type="password"
-            name="password"/>
-        </div>
-        <div>
-          <p className="register-para">Confirm Password:</p>
-          <input className="register-input"  type="password"
-            name="password2" />
-        </div>
-        <button>Submit</button>
-        <span>
-          <p>Already a users?</p>
-          <button onClick={handlClick} className="register-btn">Login</button>
-        </span>
+        <form className="register-form">
+          <h3>SignUp</h3>
+          <div>
+            <p className="register-para">Name:</p>
+            <input
+              className="register-input"
+              onChange={handleChange}
+              type="text"
+              name="name"
+              value={name}
+            />
+          </div>
+          <div>
+            <p className="register-para">E-mail:</p>
+            <input
+              className="register-input"
+              onChange={handleChange}
+              type="email"
+              name="email"
+              value={email}
+            />
+          </div>
+          <div>
+            <p className="register-para">Password:</p>
+            <input
+              className="register-input"
+              onChange={handleChange}
+              type="password"
+              name="password"
+              value={password}
+            />
+          </div>
+          <div>
+            <p className="register-para">Confirm Password:</p>
+            <input
+              className="register-input"
+              onChange={handleChange}
+              type="password"
+              name="password2"
+              value={password2}
+            />
+          </div>
+          <button onClick={handlClick}>Submit</button>
+          <span>
+            <p>Already a users?</p>
+            <button onClick={handlePush} className="register-btn">
+              Login
+            </button>
+          </span>
         </form>
       </div>
     </div>
   );
 };
-
-export default Register;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+const mapDispatchToProps = {
+  register,
+  setAlert,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

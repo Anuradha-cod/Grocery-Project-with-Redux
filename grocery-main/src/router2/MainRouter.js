@@ -8,14 +8,17 @@ import LoginCust from "../component/Router/LoginCust";
 import Register from "../component/Router/Register";
 import Header from "../component/header/Header";
 import SeeAllProduc from "../component/Router/SeeAllProduc";
+import AlertComponent from "../alert/alertComponent";
+import { connect } from "react-redux";
 
-const MainRouter = () => {
+const MainRouter = ({ alerts }) => {
   return (
     // <AppConsumer>
     // {(context) => (
 
     <>
       <Header />
+      {alerts.length > 0 && <AlertComponent />}
       <Switch>
         <Route exact path="/" component={() => <Home />} />
         <Route path="/dashboard" component={() => <Dashboard />} />
@@ -28,5 +31,7 @@ const MainRouter = () => {
     // </AppConsumer>
   );
 };
-
-export default MainRouter;
+const mapStateToProps = (state) => ({
+  alerts: state.alert,
+});
+export default connect(mapStateToProps, null)(MainRouter);
