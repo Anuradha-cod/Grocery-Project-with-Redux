@@ -1,5 +1,5 @@
 import {
-  GET_USERS,
+  LOAD_USERS,
   REGISTER_SUCCES,
   REGISTER_FAIL,
   LOGIN_SUCCES,
@@ -11,7 +11,7 @@ import axios from "axios";
 import setAuthToken from "../utility/setAuthToken";
 import { setAlert } from "./alert";
 
-const loadUsers = () => async (dispatch) => {
+export const loadUsers = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -19,7 +19,7 @@ const loadUsers = () => async (dispatch) => {
     const res = await axios.get(
       "https://powerful-dawn-74322.herokuapp.com/api/auth"
     );
-    dispatch({ type: GET_USERS, payload: res.data });
+    dispatch({ type: LOAD_USERS, payload: res.data });
   } catch (error) {
     dispatch({ type: ERROR });
   }
@@ -61,7 +61,7 @@ export const register = (name, email, password) => async (dispatch) => {
     dispatch({ type: REGISTER_SUCCES, payload: res.data });
   } catch (error) {
     const err = error.response.data.errors;
-    console.log(err, "alert errors");
+    // console.log(err, "alert errors");
     if (err) {
       err.forEach((e) => dispatch(setAlert(e.msg, "danger")));
     }

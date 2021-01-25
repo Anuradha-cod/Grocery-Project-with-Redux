@@ -6,8 +6,11 @@ const MyCart = ({ setMyCart, myCart }) => {
 
   return (
     <div className="cart" onClick={() => setMyCart(true)}>
-      My Cart
-      <AiOutlineShoppingCart size={25} className="cartIcon" />
+      <div className="cart-mycart">
+        <h4 className="cartIcon"> My Cart</h4>
+
+        <AiOutlineShoppingCart size={25} className="cartIcon" />
+      </div>
     </div>
   );
 };

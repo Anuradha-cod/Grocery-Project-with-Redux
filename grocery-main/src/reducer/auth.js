@@ -1,5 +1,5 @@
 import {
-  GET_USERS,
+  LOAD_USERS,
   REGISTER_SUCCES,
   REGISTER_FAIL,
   LOGIN_SUCCES,
@@ -16,6 +16,14 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case LOAD_USERS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: payload,
+      };
+
     case LOGIN_SUCCES:
     case REGISTER_SUCCES:
       localStorage.setItem("token", payload.token);

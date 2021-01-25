@@ -1,5 +1,5 @@
 // auth
-export const GET_USERS = "GET_USERS";
+export const LOAD_USERS = "LOAD_USERS";
 export const REGISTER_SUCCES = "REGISTER_SUCCES";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_SUCCES = "LOGIN_SUCCES";

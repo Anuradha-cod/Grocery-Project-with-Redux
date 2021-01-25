@@ -2,6 +2,7 @@ import React from "react";
 import MyCartContain2 from "./MyCartContain2";
 import { connect } from "react-redux";
 import { incrementProductCount } from "../../action/products";
+import { useHistory } from "react-router-dom";
 
 const MyCartContain = ({ item, updatedProduct, setMyCart, myCart }) => {
   console.log(item);
@@ -12,6 +13,7 @@ const MyCartContain = ({ item, updatedProduct, setMyCart, myCart }) => {
   updatedProduct.forEach((item) => {
     subtotal = subtotal + (item.count || 0) * item.unitPrice;
   });
+  let history = useHistory();
 
   return (
     <div className="MyCartContain">
@@ -55,9 +57,11 @@ const MyCartContain = ({ item, updatedProduct, setMyCart, myCart }) => {
       {subtotal === 0 ? (
         <button className="shopping-button">Start Shopping</button>
       ) : (
-        <button className="checkout-button">
-          <p>Proceed to Checkout:</p>
-          <p className="checkout-button-p">{subtotal + 49}</p>
+        <button className="checkout-button" onClick={() => setMyCart(false)}>
+          <p onClick={() => history.push("/paymentCheckOut")}>
+            Proceed to Checkout:
+          </p>
+          <p className="checkout-button-p">{subtotal + 39}</p>
         </button>
       )}
     </div>

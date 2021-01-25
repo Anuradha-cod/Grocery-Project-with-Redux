@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import "./App.css";
 import { AppConsumer } from "../utility/ContextApi";
 import Home from "../component/Router/Home";
@@ -10,12 +10,12 @@ import Header from "../component/header/Header";
 import SeeAllProduc from "../component/Router/SeeAllProduc";
 import AlertComponent from "../alert/alertComponent";
 import { connect } from "react-redux";
+import PaymentCheckOut from "../component/Router/PaymentCheckOut";
+import PrivatRouter from "./PrivatRouter";
+import OfferSection from "../component/offer-section/OfferSection";
 
 const MainRouter = ({ alerts }) => {
   return (
-    // <AppConsumer>
-    // {(context) => (
-
     <>
       <Header />
       {alerts.length > 0 && <AlertComponent />}
@@ -25,6 +25,11 @@ const MainRouter = ({ alerts }) => {
         <Route path="/register" component={() => <Register />} />
         <Route path="/login" component={() => <LoginCust />} />
         <Route path="/seeAllProduc" component={() => <SeeAllProduc />} />
+        <Route path="/category" component={() => <OfferSection />} />
+        <PrivatRouter
+          path="/paymentCheckOut"
+          component={() => <PaymentCheckOut />}
+        />
       </Switch>
     </>
     // )}

@@ -157,14 +157,15 @@
     background-color: rgb(238, 236, 236);
   }
   .main-nav {
-    position: absolute;
-    top: 80px;
+    /* position: absolute; */
+    /* top: 80px; */
+    margin-top: 37px;
     display: flex;
     height: 45px;
     width: 100%;
     background-color: #ffffff;
     border: 1px solid rgb(190, 187, 187);
-    z-index: 1000;
+    /* z-index: 1000; */
   }
   .main-nav-left {
     width: 50px;
@@ -205,11 +206,11 @@
 
   .seeAllMain {
     height: 1200px;
-    width: 97%;
+    width: 99%;
     background-color: #ffffff;
     margin-left: 2px;
     display: flex;
-    margin-top: 80px;
+    margin-top: 105px;
   }
   .seeallMain-sidebar {
     margin-top: 40px;
@@ -288,11 +289,11 @@
     /* font-size: 20px; */
     border: 1px solid rgb(245, 244, 244);
     height: 90px;
-    width: 50px;
+    width: 65px;
     /* margin-left: 5px; */
   }
   .SeeAllProdectsImg-img-p {
-    font-size: 10px;
+    font-size: 9px;
   }
   .SeeAllProdectsImg:hover {
     border: 1px solid rgb(206, 203, 203);
