@@ -3,6 +3,7 @@
   .first-header-mobile {
     display: flex;
   }
+
   .header-flex {
     display: flex;
     /* justify-content: center;
@@ -44,16 +45,6 @@
 
   .flex-search {
     display: flex;
-  }
-  /* .flex-search-1 {
-    display: flex;
-  } */
-  .flex-search :hover {
-    background-color: turquoise;
-  }
-
-  .header-flex:hover {
-    /* background-color: #1c2224; */
   }
 
   /*-----LOCATION--------  */
@@ -223,7 +214,8 @@ left: 0;
     display: none;
   }
   .cartIcon {
-    padding-right: 20px;
+    margin-top: 10px;
+    padding-right: 10px;
   }
   .cart:hover {
     background-color: #1c2224;
@@ -279,7 +271,7 @@ left: 0;
     background-color: black;
     height: 50px;
     width: 350px;
-    margin-left: 10px;
+    margin-left: -1px;
   }
   .myCartContaint-h6 {
     position: fixed;
@@ -692,9 +684,6 @@ left: 0;
   }
 
   /* ----- ---------------------------------------------------------------SEARCH--------------------------- */
-  .search-div {
-    /* margin-left: 100px; */
-  }
 
   .search {
     margin-left: 20px;
@@ -953,7 +942,7 @@ left: 0;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-  height: 84vh;
+  height: 74vh;
   align-items: center;
 }
 .cart-block {

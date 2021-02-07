@@ -12,7 +12,7 @@ import AlertComponent from "../alert/alertComponent";
 import { connect } from "react-redux";
 import PaymentCheckOut from "../component/Router/PaymentCheckOut";
 import PrivatRouter from "./PrivatRouter";
-import OfferSection from "../component/offer-section/OfferSection";
+// import OfferSection from "../component/offer-section/OfferSection";
 
 const MainRouter = ({ alerts }) => {
   return (
@@ -25,7 +25,7 @@ const MainRouter = ({ alerts }) => {
         <Route path="/register" component={() => <Register />} />
         <Route path="/login" component={() => <LoginCust />} />
         <Route path="/seeAllProduc" component={() => <SeeAllProduc />} />
-        <Route path="/category" component={() => <OfferSection />} />
+        {/* <Route path="/category" component={() => <OfferSection />} /> */}
         <PrivatRouter
           path="/paymentCheckOut"
           component={() => <PaymentCheckOut />}
