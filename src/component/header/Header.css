@@ -437,8 +437,8 @@ left: 0;
   .menubar-content {
     display: block;
     background-color: rgb(212, 156, 81);
-    width: 200px;
-    height: 400px;
+    width: 150px;
+    height: 250px;
     position: fixed;
     z-index: 1020;
     margin-left: -20px;
@@ -447,8 +447,8 @@ left: 0;
   }
   .welcome {
     background-color: rgb(180, 179, 175);
-    width: 190px;
-    height: 80px;
+    width: 140px;
+    height: 60px;
     padding: 0 20px;
     margin: 0 -20px;
   }
@@ -872,12 +872,12 @@ left: 0;
   width: 100%;
   border: none;
   height: 8vh;
-  padding: 4%;
+  /* padding: 4%; */
   font-size: inherit;
   font-weight: 600;
   font-family: cursive;
   bottom: 0;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .cart-component {
   display: flex;
@@ -942,7 +942,7 @@ left: 0;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-  height: 74vh;
+  height: 53vh;
   align-items: center;
 }
 .cart-block {
