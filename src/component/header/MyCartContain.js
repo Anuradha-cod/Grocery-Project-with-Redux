@@ -18,8 +18,8 @@ const MyCartContain = ({ item, updatedProduct, setMyCart, myCart }) => {
   return (
     <div className="MyCartContain">
       {subtotal === 0 ? (
-        <div className="no-content">
-          <div className="myCartContaint-h4">
+        <div className="no-content" onClick={() => setMyCart(false)}>
+          <div className="myCartContaint-h4" onClick={() => setMyCart(false)}>
             <h2 className="myCartContaint-h5" onClick={() => setMyCart(false)}>
               My Cart
             </h2>
@@ -29,7 +29,7 @@ const MyCartContain = ({ item, updatedProduct, setMyCart, myCart }) => {
             src="https://m.media-amazon.com/images/G/31/cart/empty/kettle-desaturated._CB424694257_.svg"
             alt="cart-img"
           />
-          <p>Your Cart is Empty</p>
+          <p className="cart-empty">Your Cart is Empty</p>
         </div>
       ) : (
         <div>

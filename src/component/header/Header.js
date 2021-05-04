@@ -17,6 +17,7 @@ import { useHistory } from "react-router-dom";
 const Header = ({ context }) => {
   const [locationView, setLocationView] = useState(false);
   const [searchHide, setSearchHide] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const [login, setLogin] = useState(false);
   const [myCart, setMyCart] = useState(false);
   const [menubarVisibility, setMenubarVisibility] = useState(false);
@@ -51,9 +52,12 @@ const Header = ({ context }) => {
           <div className="flex-search-category" onClick={handlePush}>
             Category
           </div>
-          <Search setSearchHide={setSearchHide} context={context} />
+          <Search setSearchHide={setSearchHide} setSearchTerm={setSearchTerm} />
           {searchHide && (
-            <SearchContent setSearchHide={setSearchHide} context={context} />
+            <SearchContent
+              setSearchHide={setSearchHide}
+              searchTerm={searchTerm}
+            />
           )}
         </div>
       </div>
